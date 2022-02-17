@@ -1,9 +1,15 @@
 import './App.css';
+import Sidebar from './components/layout/Sidebar';
+import Suggestions from './components/layout/Suggestions';
+import {ContainerStyled} from '../src/components/styles/ContainerStyled'
 
 function App() {
   return (
     <div className="App">
-      <p>test</p>
+      <ContainerStyled>
+        <Sidebar />
+        <Suggestions />
+      </ContainerStyled>
     </div>
   );
 }
