@@ -5,6 +5,10 @@ import { ReactComponent as CommentSvg } from '../assets/shared/icon-comments.svg
 
 export default function SuggestionBox(props) {
 
+    function camelCaseHelper(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     return(
         <SuggestionBoxStyled>
             <LeftContainer>
@@ -12,7 +16,7 @@ export default function SuggestionBox(props) {
                 <SuggestionContent>
                     <h3>{props.suggestion.title}</h3>
                     <p>{props.suggestion.description}</p>
-                    <Tag>{props.suggestion.category}</Tag>
+                    <Tag>{camelCaseHelper(props.suggestion.category)}</Tag>
                 </SuggestionContent>
             </LeftContainer>
             <RightContainer>
