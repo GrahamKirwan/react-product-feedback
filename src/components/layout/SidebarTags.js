@@ -9,6 +9,7 @@ export default function SidebarTags() {
     const ctx = useContext(TagsContext);
 
 
+    //Toggle active state to the clicked tag
     function tagClickHandler(id) {
         const newTags = ctx.tags.map((tag) => {
             if(tag.id == id) {
@@ -26,9 +27,8 @@ export default function SidebarTags() {
                 }
             }
         })
-
+        
         ctx.setTags(newTags)
-
     }
 
     return (

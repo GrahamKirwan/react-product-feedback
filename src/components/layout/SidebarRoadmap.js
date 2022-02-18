@@ -1,11 +1,12 @@
 import { SidebarRoadmapStyled, RoadmapStatsStyled, NumStyled, OrangeCircle, PurpleCircle, GreenCircle, StatContainer, CircleContainer, Text } from "../styles/SidebarRoadmapStyled"
+import { Link } from "react-router-dom";
 
 export default function SidebarRoadmap() {
     return (
         <SidebarRoadmapStyled>
             <div>
                 <h3>Roadmap</h3>
-                <a href="#">View</a>
+                <Link to="/roadmap">View</Link>
             </div>
             <RoadmapStatsStyled>
                 <StatContainer>
