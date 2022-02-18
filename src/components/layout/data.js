@@ -1,8 +1,8 @@
-{
+export const data = {
   "currentUser": {
     "image": "./assets/user-images/image-zena.jpg",
-    "name": "Zena Kelley",
-    "username": "velvetround"
+    "name": "Graham Kirwan",
+    "username": "Grahaamm"
   },
   "productRequests": [
     {

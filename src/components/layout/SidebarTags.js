@@ -27,7 +27,7 @@ export default function SidebarTags() {
                 }
             }
         })
-        
+
         ctx.setTags(newTags)
     }
 
