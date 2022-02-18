@@ -93,4 +93,6 @@ export const Text = styled.p`
 export const NumStyled = styled.p`
     font-weight: 700;
     margin: 0;
+    font-size: 18px;
+    color: #647196;
 `
