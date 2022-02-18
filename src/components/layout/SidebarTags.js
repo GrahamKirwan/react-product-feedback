@@ -60,6 +60,8 @@ export default function SidebarTags() {
         })
 
         setTags(newTags)
+
+        // todo: Pass ID into another function to display certain suggestions
         
     }
 
