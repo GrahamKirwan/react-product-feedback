@@ -11,13 +11,15 @@ const suggestions = data.productRequests.filter((request => {
     }
 }))
 
+export default function Suggestions(props) {
 
-export default function Suggestions() {
-
-
+    function feedbackClickHandler() {
+        props.feedbackClickHandler();
+    }
+    
     return (
         <SuggestionsStyled>
-            <SuggestionsBanner suggestions={suggestions}></SuggestionsBanner>
+            <SuggestionsBanner feedbackClickHandler={feedbackClickHandler} suggestions={suggestions}></SuggestionsBanner>
             {suggestions.map((suggestion) => <SuggestionBox suggestion={suggestion} key={suggestion.id}/>)}
         </SuggestionsStyled>
     )
