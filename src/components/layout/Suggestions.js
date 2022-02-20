@@ -17,7 +17,7 @@ export default function Suggestions() {
 
     return (
         <SuggestionsStyled>
-            <SuggestionsBanner></SuggestionsBanner>
+            <SuggestionsBanner suggestions={suggestions}></SuggestionsBanner>
             {suggestions.map((suggestion) => <SuggestionBox suggestion={suggestion} key={suggestion.id}/>)}
         </SuggestionsStyled>
     )

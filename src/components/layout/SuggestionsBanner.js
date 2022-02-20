@@ -3,12 +3,13 @@ import FeedbackButton from '../FeedbackButton'
 
 import { ReactComponent as SuggSvg } from '../../assets/suggestions/icon-suggestions.svg';
 
-export default function SuggestionsBanner() {
+export default function SuggestionsBanner(props) {
+
     return (
         <SuggestionsBannerStyled>
             <BannerLeft>
                 <SuggSvg></SuggSvg>
-                <h2>6 Suggestions</h2>
+                <h2>{props.suggestions.length} Suggestions</h2>
             </BannerLeft>
             <FeedbackButton/>
         </SuggestionsBannerStyled>
