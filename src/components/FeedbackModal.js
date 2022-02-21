@@ -18,13 +18,20 @@ import { ReactComponent as PlusSvg } from "../assets/shared/icon-new-feedback.sv
 import { ReactComponent as DownSvg } from "../assets/shared/icon-arrow-down.svg";
 import { ReactComponent as CheckSvg } from "../assets/shared/icon-check.svg";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function FeedbackModal(props) {
+
   const [category, setCategory] = useState("Feature");
   const [categoryDropdown, setCategoryDropdown] = useState(false);
 
+  const titleRef = useRef();
+  const feedbackRef = useRef();
+
   function backButtonHandler() {
+    titleRef.current.value = '';
+    feedbackRef.current.value = '';
+    setCategory('Feature');
     props.backButtonHandler();
   }
 
@@ -34,6 +41,20 @@ export default function FeedbackModal(props) {
     } else {
       setCategoryDropdown(true);
     }
+  }
+
+  function addFeedbackButtonHandler() {
+      let newFeedback = {
+          title: titleRef.current.value,
+          category: category,
+          feedbackDetails: feedbackRef.current.value
+      }
+
+      titleRef.current.value = '';
+      feedbackRef.current.value = '';
+      setCategory('Feature');
+
+      console.log(newFeedback)
   }
 
   function featureClickHandler() {
@@ -73,7 +94,7 @@ export default function FeedbackModal(props) {
             <FieldContainer>
               <h3>Feedback Title</h3>
               <p>Add a short, descriptive headline</p>
-              <input type="text"></input>
+              <input type="text" ref={titleRef}></input>
             </FieldContainer>
             <FieldContainer>
               <h3>Category</h3>
@@ -139,11 +160,11 @@ export default function FeedbackModal(props) {
                 Include any specific comments on what should be improved, added,
                 etc.
               </p>
-              <textarea rows={4}></textarea>
+              <textarea rows={4} ref={feedbackRef}></textarea>
             </FieldContainer>
             <ButtonsContainer>
-                <CancelButton>Cancel</CancelButton>
-                <AddButton>Add Feedback</AddButton>
+                <CancelButton onClick={backButtonHandler}>Cancel</CancelButton>
+                <AddButton onClick={addFeedbackButtonHandler}>Add Feedback</AddButton>
             </ButtonsContainer>
           </ContentContainer>
         </FormContainer>
