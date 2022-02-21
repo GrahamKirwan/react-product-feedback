@@ -11,7 +11,26 @@ export const FeedbackModalStyled =  styled.div`
 `
 
 export const FeedbackModalContainer = styled.div`
-    background-color: #fff;
     width: 540px;
     margin: 0 auto;
+    margin-top: 60px;
+`
+
+export const BackBtn = styled.div`
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    svg {
+        margin-right: 15px;
+    }
+
+    p {
+        color: #647196;
+        font-weight: 700;
+    }
+
+    &:hover > p{
+        text-decoration: underline;
+    }
 `

@@ -12,11 +12,15 @@ export default function Homepage() {
         setModalActive(true)
     }
 
+    function backButtonHandler() {
+        setModalActive(false)
+    }
+
   return (
     <>
       <Sidebar />
       <Suggestions feedbackClickHandler={feedbackClickHandler} />
-      <FeedbackModal modalActive={modalActive}/>
+      <FeedbackModal backButtonHandler={backButtonHandler} modalActive={modalActive}/>
     </>
   );
 }
