@@ -6,12 +6,15 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 
 import { TagsContextProvider } from "../src/components/store/tags-context";
+import { DataContextProvider } from "../src/components/store/data-context";
 
 ReactDOM.render(
-  <TagsContextProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </TagsContextProvider>,
+  <DataContextProvider>
+    <TagsContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </TagsContextProvider>
+  </DataContextProvider>,
   document.getElementById("root")
 );

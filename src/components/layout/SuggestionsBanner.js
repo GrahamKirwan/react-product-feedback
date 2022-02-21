@@ -3,6 +3,7 @@ import FeedbackButton from '../FeedbackButton'
 
 import { ReactComponent as SuggSvg } from '../../assets/suggestions/icon-suggestions.svg';
 
+
 export default function SuggestionsBanner(props) {
 
     function feedbackClickHandler() {

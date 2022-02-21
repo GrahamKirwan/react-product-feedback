@@ -2,16 +2,20 @@ import { SuggestionsStyled } from "../styles/SuggestionsStyled"
 import SuggestionBox from "../SuggestionBox"
 import SuggestionsBanner from "./SuggestionsBanner"
 
-import { data } from "../layout/data";
+import { useContext } from 'react';
+import { DataContext } from "../store/data-context"
 
-
-const suggestions = data.productRequests.filter((request => {
-    if (request.status == 'suggestion') {
-        return request
-    }
-}))
 
 export default function Suggestions(props) {
+
+
+    const ctx = useContext(DataContext);
+
+    const suggestions = ctx.data.filter((request => {
+        if (request.status == 'suggestion') {
+            return request
+        }
+    }))
 
     function feedbackClickHandler() {
         props.feedbackClickHandler();

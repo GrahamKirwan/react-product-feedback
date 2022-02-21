@@ -54,7 +54,7 @@ export default function FeedbackModal(props) {
       feedbackRef.current.value = '';
       setCategory('Feature');
 
-      console.log(newFeedback)
+      props.addNewFeedback(newFeedback);
   }
 
   function featureClickHandler() {
