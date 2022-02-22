@@ -11,6 +11,7 @@ export default function Suggestions(props) {
 
     const ctx = useContext(DataContext);
 
+    
     const suggestions = ctx.data.filter((request => {
         if (request.status == 'suggestion') {
             return request
@@ -20,11 +21,15 @@ export default function Suggestions(props) {
     function feedbackClickHandler() {
         props.feedbackClickHandler();
     }
+
+    function upvoteClickHandler(id) {
+        ctx.upVote(id);
+    }
     
     return (
         <SuggestionsStyled>
             <SuggestionsBanner feedbackClickHandler={feedbackClickHandler} suggestions={suggestions}></SuggestionsBanner>
-            {suggestions.map((suggestion) => <SuggestionBox suggestion={suggestion} key={suggestion.id}/>)}
+            {suggestions.map((suggestion) => <SuggestionBox upvoteClickHandler={upvoteClickHandler} suggestion={suggestion} key={suggestion.id}/>)}
         </SuggestionsStyled>
     )
 }

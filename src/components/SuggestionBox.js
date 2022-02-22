@@ -9,10 +9,14 @@ export default function SuggestionBox(props) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
+    function upvoteClickHandler() {
+        props.upvoteClickHandler(props.suggestion.id);
+    }
+
     return(
         <SuggestionBoxStyled>
             <LeftContainer>
-                <Upvote>{props.suggestion.upvotes}</Upvote>
+                <Upvote upvoteClickHandler={upvoteClickHandler}>{props.suggestion.upvotes}</Upvote>
                 <SuggestionContent>
                     <h3>{props.suggestion.title}</h3>
                     <p>{props.suggestion.description}</p>

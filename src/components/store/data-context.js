@@ -16,6 +16,7 @@ export function DataContextProvider(props) {
             "title": "Add tags for solutions",
             "category": "enhancement",
             "upvotes": 112,
+            "curUserUpvoted": false,
             "status": "suggestion",
             "description": "Easier to search for solutions based on a specific stack.",
             "comments": [
@@ -44,6 +45,7 @@ export function DataContextProvider(props) {
             "title": "Add a dark theme option",
             "category": "feature",
             "upvotes": 99,
+            "curUserUpvoted": false,
             "status": "suggestion",
             "description": "It would help people with light sensitivities and who prefer dark mode.",
             "comments": [
@@ -92,6 +94,7 @@ export function DataContextProvider(props) {
             "title": "Q&A within the challenge hubs",
             "category": "feature",
             "upvotes": 65,
+            "curUserUpvoted": false,
             "status": "suggestion",
             "description": "Challenge-specific Q&A would make for easy reference.",
             "comments": [
@@ -111,6 +114,7 @@ export function DataContextProvider(props) {
             "title": "Add image/video upload to feedback",
             "category": "enhancement",
             "upvotes": 51,
+            "curUserUpvoted": false,
             "status": "suggestion",
             "description": "Images and screencasts can enhance comments on solutions.",
             "comments": [
@@ -139,6 +143,7 @@ export function DataContextProvider(props) {
             "title": "Ability to follow others",
             "category": "feature",
             "upvotes": 42,
+            "curUserUpvoted": false,
             "status": "suggestion",
             "description": "Stay updated on comments and solutions other people post.",
             "comments": [
@@ -178,6 +183,7 @@ export function DataContextProvider(props) {
             "title": "Preview images not loading",
             "category": "bug",
             "upvotes": 3,
+            "curUserUpvoted": false,
             "status": "suggestion",
             "description": "Challenge preview images are missing when you apply a filter."
           },
@@ -186,6 +192,7 @@ export function DataContextProvider(props) {
             "title": "More comprehensive reports",
             "category": "feature",
             "upvotes": 123,
+            "curUserUpvoted": false,
             "status": "planned",
             "description": "It would be great to see a more detailed breakdown of solutions.",
             "comments": [
@@ -214,6 +221,7 @@ export function DataContextProvider(props) {
             "title": "Learning paths",
             "category": "feature",
             "upvotes": 28,
+            "curUserUpvoted": false,
             "status": "planned",
             "description": "Sequenced projects for different goals to help people improve.",
             "comments": [
@@ -233,6 +241,7 @@ export function DataContextProvider(props) {
             "title": "One-click portfolio generation",
             "category": "feature",
             "upvotes": 62,
+            "curUserUpvoted": false,
             "status": "in-progress",
             "description": "Add ability to create professional looking portfolio from profile.",
             "comments": [
@@ -252,6 +261,7 @@ export function DataContextProvider(props) {
             "title": "Bookmark challenges",
             "category": "feature",
             "upvotes": 31,
+            "curUserUpvoted": false,
             "status": "in-progress",
             "description": "Be able to bookmark challenges to take later on.",
             "comments": [
@@ -271,6 +281,7 @@ export function DataContextProvider(props) {
             "title": "Animated solution screenshots",
             "category": "bug",
             "upvotes": 9,
+            "curUserUpvoted": false,
             "status": "in-progress",
             "description": "Screenshots of solutions with animations don’t display correctly."
           },
@@ -279,6 +290,7 @@ export function DataContextProvider(props) {
             "title": "Add micro-interactions",
             "category": "enhancement",
             "upvotes": 71,
+            "curUserUpvoted": false,
             "status": "live",
             "description": "Small animations at specific points can add delight.",
             "comments": [
@@ -313,9 +325,16 @@ export function DataContextProvider(props) {
         setData(newItems)
     }
 
+    function upVoteHandler(id) {
+        let newData = [...data]
+        newData[id-1].upvotes++;
+        setData(newData)
+    }
+
     const context = {
         data: data,
         addRequest: addRequestHandler,
+        upVote: upVoteHandler
     }
 
     return (
