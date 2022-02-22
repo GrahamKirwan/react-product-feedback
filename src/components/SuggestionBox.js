@@ -16,7 +16,7 @@ export default function SuggestionBox(props) {
     return(
         <SuggestionBoxStyled>
             <LeftContainer>
-                <Upvote upvoteClickHandler={upvoteClickHandler}>{props.suggestion.upvotes}</Upvote>
+                <Upvote upvoteClickHandler={upvoteClickHandler} active={props.suggestion.curUserUpvoted}>{props.suggestion.upvotes}</Upvote>
                 <SuggestionContent>
                     <h3>{props.suggestion.title}</h3>
                     <p>{props.suggestion.description}</p>

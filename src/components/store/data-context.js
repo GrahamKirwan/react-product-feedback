@@ -327,7 +327,13 @@ export function DataContextProvider(props) {
 
     function upVoteHandler(id) {
         let newData = [...data]
-        newData[id-1].upvotes++;
+        if(!newData[id-1].curUserUpvoted) {
+            newData[id-1].upvotes++;
+            newData[id-1].curUserUpvoted = true;
+        } else {
+            newData[id-1].upvotes--;
+            newData[id-1].curUserUpvoted = false;
+        }
         setData(newData)
     }
 

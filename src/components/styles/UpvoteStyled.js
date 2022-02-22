@@ -4,8 +4,6 @@ export const UpvoteStyled = styled.div`
     width: 40px;
     height: 53px;
     border-radius: 10px;
-    background-color: #f2f4ff;
-    color: #373f68;
     align-self: flex-start;
     display: flex;
     flex-direction: column;
@@ -13,8 +11,12 @@ export const UpvoteStyled = styled.div`
     align-items: center;
     font-size: 14px;
     font-weight: 700;
+    background-color: ${(props) => props.active ? '#4661e6' : '#f2f4ff'};
+    color: ${(props) => props.active ? '#fff' : '#373f68'};
+    user-select: none;
 
     &:hover {
-        background-color: #cfd7ff;
+        background-color: ${(props) => props.active ? '#4661e6' : '#cfd7ff'};
+
     }
 `
