@@ -5,6 +5,7 @@ import { ReactComponent as CommentSvg } from '../assets/shared/icon-comments.svg
 
 export default function SuggestionBox(props) {
 
+
     function camelCaseHelper(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -13,8 +14,12 @@ export default function SuggestionBox(props) {
         props.upvoteClickHandler(props.suggestion.id);
     }
 
+    function suggestionBoxClickHandler() {
+        props.suggestionBoxClickHandler(props.suggestion.id);
+    }
+
     return(
-        <SuggestionBoxStyled>
+        <SuggestionBoxStyled onClick={suggestionBoxClickHandler}>
             <LeftContainer>
                 <Upvote upvoteClickHandler={upvoteClickHandler} active={props.suggestion.curUserUpvoted}>{props.suggestion.upvotes}</Upvote>
                 <SuggestionContent>

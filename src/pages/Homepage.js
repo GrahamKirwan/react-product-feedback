@@ -4,20 +4,25 @@ import FeedbackModal from '../components/FeedbackModal';
 
 import { useState, useContext } from 'react';
 import { DataContext } from "../components/store/data-context";
+import SuggestionModal from '../components/SuggestionModal';
 
 
 export default function Homepage() {
 
-    const [modalActive, setModalActive] = useState(false);
+    const [feedbackModalActive, setFeedbackModalActive] = useState(false);
+    const [suggestionModalActive, setSuggestionModalActive] = useState(false);
+    const [suggBoxId, setSuggBoxId] = useState(0);
+
     const ctx = useContext(DataContext);
 
 
+
     function feedbackClickHandler() {
-        setModalActive(true)
+      setFeedbackModalActive(true)
     }
 
     function backButtonHandler() {
-        setModalActive(false)
+      setFeedbackModalActive(false)
     }
 
     function addNewFeedback(newFeedback) {
@@ -35,11 +40,18 @@ export default function Homepage() {
       ctx.addRequest(request);
     }
 
+
+    function suggestionBoxClickHandler(id) {
+      setSuggBoxId(id);
+      setSuggestionModalActive(true);
+    }
+
   return (
     <>
       <Sidebar />
-      <Suggestions feedbackClickHandler={feedbackClickHandler} />
-      <FeedbackModal addNewFeedback={addNewFeedback} backButtonHandler={backButtonHandler} modalActive={modalActive}/>
+      <Suggestions suggestionBoxClickHandler={suggestionBoxClickHandler} feedbackClickHandler={feedbackClickHandler} />
+      <FeedbackModal addNewFeedback={addNewFeedback} backButtonHandler={backButtonHandler} modalActive={feedbackModalActive}/>
+      <SuggestionModal modalActive={suggestionModalActive} id={suggBoxId}></SuggestionModal>
     </>
   );
 }

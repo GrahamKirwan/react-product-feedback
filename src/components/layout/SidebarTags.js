@@ -19,6 +19,7 @@ export default function SidebarTags() {
                     active: true
                 }
             }
+            
             else {
                 return {
                     tag: tag.tag,
