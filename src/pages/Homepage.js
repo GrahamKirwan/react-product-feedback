@@ -46,12 +46,16 @@ export default function Homepage() {
       setSuggestionModalActive(true);
     }
 
+    function suggestionModalBackButtonHandler() {
+      setSuggestionModalActive(false);
+    }
+
   return (
     <>
       <Sidebar />
       <Suggestions suggestionBoxClickHandler={suggestionBoxClickHandler} feedbackClickHandler={feedbackClickHandler} />
       <FeedbackModal addNewFeedback={addNewFeedback} backButtonHandler={backButtonHandler} modalActive={feedbackModalActive}/>
-      <SuggestionModal modalActive={suggestionModalActive} id={suggBoxId}></SuggestionModal>
+      <SuggestionModal suggestionModalBackButtonHandler={suggestionModalBackButtonHandler} modalActive={suggestionModalActive} id={suggBoxId}></SuggestionModal>
     </>
   );
 }
