@@ -14,6 +14,7 @@ export const UpvoteStyled = styled.div`
     background-color: ${(props) => props.active ? '#4661e6' : '#f2f4ff'};
     color: ${(props) => props.active ? '#fff' : '#373f68'};
     user-select: none;
+    cursor: pointer;
 
     &:hover {
         background-color: ${(props) => props.active ? '#4661e6' : '#cfd7ff'};

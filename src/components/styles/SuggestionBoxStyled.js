@@ -10,8 +10,8 @@ export const SuggestionBoxStyled = styled.div`
     margin-bottom: 24px;
 
     &:hover {
-        cursor: pointer;
-        border: 1px solid #ad1fea
+        border: ${(props) => props.modal ? 'none' : '1px solid #ad1fea'};
+        cursor: ${(props) => props.modal ? 'auto' : 'pointer'}
     }
 
 `

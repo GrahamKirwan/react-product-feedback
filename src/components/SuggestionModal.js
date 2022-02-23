@@ -29,6 +29,13 @@ export default function SuggestionModal(props) {
     props.suggestionModalBackButtonHandler();
   }
 
+  function suggestionBoxClickHandler() {
+  }
+
+  function upvoteClickHandler(id) {
+    ctx.upVote(id);
+  }
+
   return (
     <SuggestionModalStyled modalActive={props.modalActive}>
       <SuggestionsModalContainer>
@@ -39,7 +46,7 @@ export default function SuggestionModal(props) {
           </BackBtn>
           <EditFeedbackButton>Edit Feedback</EditFeedbackButton>
         </SuggestionsModalHeader>
-        {props.id && <SuggestionBox suggestion={suggestion}></SuggestionBox>}
+        {props.id && <SuggestionBox suggestionBoxClickHandler={suggestionBoxClickHandler} upvoteClickHandler={upvoteClickHandler} modal={true} suggestion={suggestion}></SuggestionBox>}
       </SuggestionsModalContainer>
     </SuggestionModalStyled>
   );

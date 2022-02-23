@@ -17,9 +17,10 @@ export default function SuggestionBox(props) {
     function suggestionBoxClickHandler() {
         props.suggestionBoxClickHandler(props.suggestion.id);
     }
+    
 
     return(
-        <SuggestionBoxStyled onClick={suggestionBoxClickHandler}>
+        <SuggestionBoxStyled onClick={suggestionBoxClickHandler} modal={props.modal}>
             <LeftContainer>
                 <Upvote upvoteClickHandler={upvoteClickHandler} active={props.suggestion.curUserUpvoted}>{props.suggestion.upvotes}</Upvote>
                 <SuggestionContent>
