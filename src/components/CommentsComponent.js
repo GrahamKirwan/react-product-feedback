@@ -1,4 +1,4 @@
-import { CommentsComponentStyled,  UserPhoto, CommentContent, CommentHead, UsernameAndReply, CommentText, Reply } from "./styles/CommentsComponentStyled"
+import { CommentsComponentStyled } from "./styles/CommentsComponentStyled"
 
 
 import Comment from "../components/Comment";
@@ -8,8 +8,8 @@ export default function CommentsComponent(props) {
 
     return(
         <CommentsComponentStyled>
-            <h3>{props.suggestion.comments.length} Comments</h3>
-            {props.suggestion.comments.map((item) => <Comment item={item} key={item.id}></Comment>)}
+            <h3>{props.suggestion.comments ? props.suggestion.comments.length : '0'} Comments</h3>
+            {props.suggestion.comments && props.suggestion.comments.map((item, index) => <Comment item={item} key={item.id} lastItem={props.suggestion.comments.length == index+1}></Comment>)}
         </CommentsComponentStyled>
     )
 }

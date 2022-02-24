@@ -14,6 +14,7 @@ import { useContext } from "react";
 import { DataContext } from "../components/store/data-context";
 
 import CommentsComponent from '../components/CommentsComponent';
+import AddComment from "./AddComment";
 
 export default function SuggestionModal(props) {
 
@@ -50,6 +51,7 @@ export default function SuggestionModal(props) {
         </SuggestionsModalHeader>
         {props.id && <SuggestionBox suggestionBoxClickHandler={suggestionBoxClickHandler} upvoteClickHandler={upvoteClickHandler} modal={true} suggestion={suggestion}></SuggestionBox>}
         {props.id && <CommentsComponent suggestion={suggestion}></CommentsComponent>}
+        <AddComment></AddComment>
       </SuggestionsModalContainer>
     </SuggestionModalStyled>
   );

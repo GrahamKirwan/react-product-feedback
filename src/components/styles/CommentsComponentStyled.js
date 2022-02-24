@@ -4,7 +4,7 @@ export const CommentsComponentStyled = styled.div`
   background-color: #fff;
   border-radius: 10px;
   padding: 30px;
-  padding-bottom: 0px;
+  padding-bottom: 1px;
 
   h3 {
     color: #3a4374;
@@ -20,6 +20,8 @@ export const CommentStyled = styled.div`
   border-bottom: 2px solid #f2f4ff;
   padding-bottom: 20px;
   margin-bottom: 35px;
+  border-bottom: ${(props) => props.lastItem ? 'none' : '2px solid #f2f4ff'};;
+  
 
 `;
 

@@ -15,7 +15,7 @@ export default function Comment(props) {
     }
 
     return (
-        <CommentStyled>
+        <CommentStyled lastItem={props.lastItem}>
                 <UserPhoto src={require(`../assets/user-images/${props.item.user.image}`)}></UserPhoto>
                 <CommentContent>
                     <CommentHead>
