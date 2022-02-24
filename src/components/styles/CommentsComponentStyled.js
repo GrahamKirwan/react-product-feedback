@@ -18,11 +18,12 @@ export const CommentsComponentStyled = styled.div`
 export const CommentStyled = styled.div`
   display: flex;
   border-bottom: 2px solid #f2f4ff;
-  padding-bottom: 20px;
-  margin-bottom: 35px;
   border-bottom: ${(props) => props.lastItem ? 'none' : '2px solid #f2f4ff'};;
+  margin-bottom: ${(props) => props.reply ? '0px' : '35px'};
+  padding-top: ${(props) => props.reply ? '20px' : '0px'};
+  padding-bottom: ${(props) => props.reply ? '0px' : '20px'};
+  position: relative;
   
-
 `;
 
 export const UserPhoto = styled.img`
@@ -82,6 +83,11 @@ export const CommentText = styled.p`
   font-size: 15px;
   line-height: 22px;
   color: #647196;
+
+  span {
+      color: #ad1fea;
+      font-weight: 700;
+  }
 `;
 
 export const Reply = styled.div`
@@ -133,4 +139,13 @@ export const Reply = styled.div`
         cursor: pointer;
     }
   }
+`
+
+export const GreyLine = styled.div`
+    position: absolute;
+    top: 65px;
+    left: 17.5px;
+    width: 1px;
+    height: calc(100% - 175px);
+    background-color: #f2f4ff;
 `

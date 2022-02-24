@@ -1,5 +1,5 @@
-import { CommentStyled, UserPhoto, CommentContent, CommentHead, UsernameAndReply, CommentText, Reply } from "./styles/CommentsComponentStyled"
-
+import { CommentStyled, UserPhoto, CommentContent, CommentHead, UsernameAndReply, CommentText, Reply, GreyLine } from "./styles/CommentsComponentStyled"
+import CommentReplies from '../components/CommentReplies';
 import { useState } from "react";
 
 export default function Comment(props) {
@@ -17,6 +17,7 @@ export default function Comment(props) {
     return (
         <CommentStyled lastItem={props.lastItem}>
                 <UserPhoto src={require(`../assets/user-images/${props.item.user.image}`)}></UserPhoto>
+                <GreyLine />
                 <CommentContent>
                     <CommentHead>
                         <h3>{props.item.user.name}</h3>
@@ -30,6 +31,7 @@ export default function Comment(props) {
                         <textarea placeholder="Type your reply here"></textarea>
                         <button>Post Reply</button>
                     </Reply>
+                    {props.item.replies && props.item.replies.map((reply, index) => <CommentReplies reply={reply} key={index}></CommentReplies>)}
                 </CommentContent>
         </CommentStyled>
     )
