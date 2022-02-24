@@ -13,6 +13,8 @@ import SuggestionBox from "./SuggestionBox";
 import { useContext } from "react";
 import { DataContext } from "../components/store/data-context";
 
+import CommentsComponent from '../components/CommentsComponent';
+
 export default function SuggestionModal(props) {
 
     const ctx = useContext(DataContext);
@@ -47,6 +49,7 @@ export default function SuggestionModal(props) {
           <EditFeedbackButton>Edit Feedback</EditFeedbackButton>
         </SuggestionsModalHeader>
         {props.id && <SuggestionBox suggestionBoxClickHandler={suggestionBoxClickHandler} upvoteClickHandler={upvoteClickHandler} modal={true} suggestion={suggestion}></SuggestionBox>}
+        {props.id && <CommentsComponent suggestion={suggestion}></CommentsComponent>}
       </SuggestionsModalContainer>
     </SuggestionModalStyled>
   );
