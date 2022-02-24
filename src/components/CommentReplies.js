@@ -14,7 +14,6 @@ export default function CommentReplies(props) {
         }
     }
 
-    console.log(props.reply)
 
     return (
         <CommentStyled lastItem={true} reply={props.reply}>
