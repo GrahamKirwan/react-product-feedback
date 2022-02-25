@@ -15,7 +15,6 @@ export const AddCommentStyled = styled.div`
 
     textarea {
         width: calc(100% - 40px);
-        border: none;
         outline: none;
         padding: 20px;
         border-radius: 10px;
@@ -27,11 +26,13 @@ export const AddCommentStyled = styled.div`
         align-items: flex-start;
         justify-content: flex-start;
         margin: 20px 0;
+        border: ${(props) => props.emptyComment ? '1px solid red' : 'none'};
 
         &:hover, &:focus {
             cursor: pointer;
             border: 1px solid #4661e6;
             height: 68px;
+            border: ${(props) => props.emptyComment ? '1px solid red' : 'none'};
         }
     }
 `
@@ -67,4 +68,12 @@ export const CommentBottom = styled.div`
             cursor: pointer;
         }
     }
+`
+
+export const ErrorMsg = styled.p`
+    color: red;
+    font-size: 12px;
+    margin: 0;
+    display: ${(props) => props.emptyComment ? 'inherit' : 'none'};
+
 `
