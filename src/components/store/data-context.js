@@ -355,7 +355,7 @@ export function DataContextProvider(props) {
         setData(newData);
     }
 
-    
+
     function addCommentReply(commentId, replyingTo, reply) {
         let newData = [...data];
         let obj = {
@@ -388,12 +388,14 @@ export function DataContextProvider(props) {
         setData(newData);
     }
 
+    
+
     const context = {
         data: data,
         addRequest: addRequestHandler,
         upVote: upVoteHandler,
         addSuggComment: addSuggCommentHandler,
-        commentReply: addCommentReply
+        commentReply: addCommentReply,
     }
 
     return (

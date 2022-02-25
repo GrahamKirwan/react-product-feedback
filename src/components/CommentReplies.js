@@ -1,11 +1,15 @@
 import { CommentStyled, UserPhoto, CommentContent, CommentHead, UsernameAndReply, CommentText, Reply } from "./styles/CommentsComponentStyled"
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
+
+import { DataContext } from "../components/store/data-context";
 
 export default function CommentReplies(props) {
 
     const [commentReply, setCommentReply] = useState(false);
 
     const replyRef = useRef();
+    const ctx = useContext(DataContext);
+
 
 
     function replyBtnHandler() {
@@ -17,7 +21,9 @@ export default function CommentReplies(props) {
     }
 
     function postReplyHandler() {
-        console.log(replyRef.current.value);
+        ctx.commentReply(props.commentId, props.reply.user.username, replyRef.current.value);
+        setCommentReply(false);
+        replyRef.current.value = '';
     }
 
 

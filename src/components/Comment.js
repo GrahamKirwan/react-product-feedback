@@ -45,7 +45,7 @@ export default function Comment(props) {
                         <textarea ref={replyRef} placeholder="Type your reply here"></textarea>
                         <button onClick={postReplyClickHandler}>Post Reply</button>
                     </Reply>
-                    {props.item.replies && props.item.replies.map((reply, index) => <CommentReplies reply={reply} key={index}></CommentReplies>)}
+                    {props.item.replies && props.item.replies.map((reply, index) => <CommentReplies commentId={props.item.id} reply={reply} key={index}></CommentReplies>)}
                 </CommentContent>
         </CommentStyled>
     )
