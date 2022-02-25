@@ -353,16 +353,47 @@ export function DataContextProvider(props) {
         }
         newData[suggId-1].comments.push(obj);
         setData(newData);
-        console.log(newData);
-        // Add a comment to the comments array of the suggestion with ID of suggId. 
-        // I need to find the highest current comment ID and add one and I also need to pass it the user 'user'.
+    }
+
+    
+    function addCommentReply(commentId, replyingTo, reply) {
+        let newData = [...data];
+        let obj = {
+            content: reply,
+            replyingTo: replyingTo,
+            user: {
+                image: "image-graham.png",
+                name: "Graham Kirwan",
+                username: "Grahaamm"
+            }
+        }
+        
+        newData.map((item) => {
+            if(item.comments) {
+                item.comments.map((comment) => {
+                    if(comment.id == commentId) {
+                        console.log(comment)
+                        if(comment.replies) {
+                            comment.replies.push(obj);
+                        } else {
+                            comment.replies = [];
+                            comment.replies.push(obj);
+                            console.log(comment)
+                        }
+                    }
+                })  
+            }
+  
+        })
+        setData(newData);
     }
 
     const context = {
         data: data,
         addRequest: addRequestHandler,
         upVote: upVoteHandler,
-        addSuggComment: addSuggCommentHandler
+        addSuggComment: addSuggCommentHandler,
+        commentReply: addCommentReply
     }
 
     return (

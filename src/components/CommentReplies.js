@@ -1,9 +1,11 @@
 import { CommentStyled, UserPhoto, CommentContent, CommentHead, UsernameAndReply, CommentText, Reply } from "./styles/CommentsComponentStyled"
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function CommentReplies(props) {
 
     const [commentReply, setCommentReply] = useState(false);
+
+    const replyRef = useRef();
 
 
     function replyBtnHandler() {
@@ -12,6 +14,10 @@ export default function CommentReplies(props) {
         } else {
             setCommentReply(true);
         }
+    }
+
+    function postReplyHandler() {
+        console.log(replyRef.current.value);
     }
 
 
@@ -28,8 +34,8 @@ export default function CommentReplies(props) {
                     </CommentHead>
                     <CommentText><span>@{props.reply.replyingTo} </span>{props.reply.content}</CommentText>
                     <Reply active={commentReply}>
-                        <textarea placeholder="Type your reply here"></textarea>
-                        <button>Post Reply</button>
+                        <textarea ref={replyRef} placeholder="Type your reply here"></textarea>
+                        <button onClick={postReplyHandler}>Post Reply</button>
                     </Reply>
                 </CommentContent>
         </CommentStyled>

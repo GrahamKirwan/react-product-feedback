@@ -1,10 +1,18 @@
 import { CommentStyled, UserPhoto, CommentContent, CommentHead, UsernameAndReply, CommentText, Reply, GreyLine } from "./styles/CommentsComponentStyled"
 import CommentReplies from '../components/CommentReplies';
-import { useState } from "react";
+import { useState, useRef, useContext } from "react";
+
+import { DataContext } from "../components/store/data-context";
+
 
 export default function Comment(props) {
 
     const [commentReply, setCommentReply] = useState(false);
+
+    const replyRef = useRef();
+
+    const ctx = useContext(DataContext);
+
 
     function replyBtnHandler () {
         if(commentReply) {
@@ -12,6 +20,12 @@ export default function Comment(props) {
         } else {
             setCommentReply(true);
         }
+    }
+
+    function postReplyClickHandler() {
+        ctx.commentReply(props.item.id, props.item.user.username, replyRef.current.value);
+        setCommentReply(false);
+        replyRef.current.value = '';
     }
 
     return (
@@ -28,8 +42,8 @@ export default function Comment(props) {
                     </CommentHead>
                     <CommentText>{props.item.content}</CommentText>
                     <Reply active={commentReply}>
-                        <textarea placeholder="Type your reply here"></textarea>
-                        <button>Post Reply</button>
+                        <textarea ref={replyRef} placeholder="Type your reply here"></textarea>
+                        <button onClick={postReplyClickHandler}>Post Reply</button>
                     </Reply>
                     {props.item.replies && props.item.replies.map((reply, index) => <CommentReplies reply={reply} key={index}></CommentReplies>)}
                 </CommentContent>
