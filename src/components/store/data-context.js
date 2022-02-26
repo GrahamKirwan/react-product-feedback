@@ -372,13 +372,11 @@ export function DataContextProvider(props) {
             if(item.comments) {
                 item.comments.map((comment) => {
                     if(comment.id == commentId) {
-                        console.log(comment)
                         if(comment.replies) {
                             comment.replies.push(obj);
                         } else {
                             comment.replies = [];
                             comment.replies.push(obj);
-                            console.log(comment)
                         }
                     }
                 })  

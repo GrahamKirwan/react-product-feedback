@@ -1,4 +1,4 @@
-1. Replies to comments
+<!-- 1. Replies to comments -->
 2. Overlapping modal overlays bug
 3. Edit feedback
 4. Save data to local storage

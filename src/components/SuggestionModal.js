@@ -15,6 +15,7 @@ import { DataContext } from "../components/store/data-context";
 
 import CommentsComponent from '../components/CommentsComponent';
 import AddComment from "./AddComment";
+import EditFeedback from "./EditFeedback";
 
 export default function SuggestionModal(props) {
 
@@ -53,6 +54,7 @@ export default function SuggestionModal(props) {
         {props.id && <CommentsComponent suggestion={suggestion}></CommentsComponent>}
         <AddComment suggestion={suggestion}></AddComment>
       </SuggestionsModalContainer>
+      <EditFeedback></EditFeedback>
     </SuggestionModalStyled>
   );
 }
