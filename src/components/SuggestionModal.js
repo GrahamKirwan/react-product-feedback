@@ -52,6 +52,18 @@ export default function SuggestionModal(props) {
     setFeedbackModalActive(false);
   }
 
+  function deleteFeedbackHandler(id) {
+    ctx.deleteFeedback(id);
+  }
+
+  function editFeedbackHandler(newFeedback) {
+    ctx.editFeedback(newFeedback);
+  }
+
+  function deleteBackButtonHandler() {
+    props.suggestionModalBackButtonHandler();
+  }
+
   return (
     <SuggestionModalStyled modalActive={props.modalActive}>
       <SuggestionsModalContainer>
@@ -66,7 +78,7 @@ export default function SuggestionModal(props) {
         {props.id && <CommentsComponent suggestion={suggestion}></CommentsComponent>}
         <AddComment suggestion={suggestion}></AddComment>
       </SuggestionsModalContainer>
-      {props.id && <EditFeedback backButtonHandler={editFeedbackBackButtonHandler} suggestion={suggestion} modalActive={feedbackModalActive}></EditFeedback>}
+      {props.id && <EditFeedback deleteBackButtonHandler={deleteBackButtonHandler} deleteFeedback={deleteFeedbackHandler} editFeedback={editFeedbackHandler} backButtonHandler={editFeedbackBackButtonHandler} suggestion={suggestion} modalActive={feedbackModalActive}></EditFeedback>}
     </SuggestionModalStyled>
   );
 }

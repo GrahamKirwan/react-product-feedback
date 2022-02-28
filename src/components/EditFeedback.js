@@ -69,22 +69,6 @@ import {
           }
     }
   
-    function addFeedbackButtonHandler() {
-        let newFeedback = {
-            title: titleRef.current.value,
-            category: category,
-            feedbackDetails: feedbackRef.current.value
-        }
-  
-        titleRef.current.value = '';
-        feedbackRef.current.value = '';
-        setCategory('Feature');
-  
-        props.addNewFeedback(newFeedback);
-        props.backButtonHandler();
-  
-    }
-  
     function featureClickHandler() {
       setCategory('Feature');
       setCategoryDropdown(false);
@@ -121,6 +105,36 @@ import {
     function liveClickHandler() {
         setStatus('Live');
         setUpdateStatusDropdown(false);
+    }
+
+    // Actions
+    function addFeedbackButtonHandler() {
+        let newFeedback = {
+            title: titleRef.current.value,
+            category: category,
+            status: status,
+            feedbackDetails: feedbackRef.current.value,
+            id: props.suggestion.id
+        }
+  
+        titleRef.current.value = '';
+        feedbackRef.current.value = '';
+        setCategory('Feature');
+        setStatus('Suggestion');
+  
+        props.editFeedback(newFeedback);
+        props.backButtonHandler();
+  
+    }
+
+    function deleteButtonHandler() {
+        props.deleteFeedback(props.suggestion.id);
+
+        titleRef.current.value = '';
+        feedbackRef.current.value = '';
+        setCategory('Feature');
+        setStatus('Suggestion');
+        props.deleteBackButtonHandler();
     }
 
     return (
@@ -262,6 +276,7 @@ import {
                     }}></textarea>
               </FieldContainer>
               <ButtonsContainer>
+                  <CancelButton style={{backgroundColor:'#d73737'}} onClick={deleteButtonHandler}>Delete</CancelButton>
                   <CancelButton onClick={backButtonHandler}>Cancel</CancelButton>
                   <AddButton onClick={addFeedbackButtonHandler}>Save Changes</AddButton>
               </ButtonsContainer>

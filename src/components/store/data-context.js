@@ -386,7 +386,34 @@ export function DataContextProvider(props) {
         setData(newData);
     }
 
-    
+    // Idea - change status to deleted 
+    function deleteFeedbackHandler(id) {
+        let newData = [...data];
+        for(let i=0; i<newData.length; i++) {
+            if(newData[i].id == id) {
+                newData[i].status = 'deleted';
+            }
+        }
+        setData(newData);
+    }
+
+    function editFeedbackHandler(newFeedback) {
+        let newData = [...data];
+        
+        for(let i=0; i<newData.length; i++) {
+            if(newData[i].id == newFeedback.id) {
+                newData[i].title = newFeedback.title;
+                newData[i].category = lowerCaseHelper(newFeedback.category);
+                newData[i].status = lowerCaseHelper(newFeedback.status);
+                newData[i].description = newFeedback.feedbackDetails;
+            }
+        }
+        setData(newData);
+    }
+
+    function lowerCaseHelper(string) {
+        return string.charAt(0).toLowerCase() + string.slice(1);
+    }
 
     const context = {
         data: data,
@@ -394,6 +421,8 @@ export function DataContextProvider(props) {
         upVote: upVoteHandler,
         addSuggComment: addSuggCommentHandler,
         commentReply: addCommentReply,
+        deleteFeedback: deleteFeedbackHandler,
+        editFeedback: editFeedbackHandler
     }
 
     return (
@@ -402,3 +431,5 @@ export function DataContextProvider(props) {
         </DataContext.Provider>
     )
 }
+
+

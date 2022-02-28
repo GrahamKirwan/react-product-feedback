@@ -22,16 +22,16 @@ export default function SuggestionBox(props) {
     return(
         <SuggestionBoxStyled onClick={suggestionBoxClickHandler} modal={props.modal}>
             <LeftContainer>
-                <Upvote upvoteClickHandler={upvoteClickHandler} active={props.suggestion.curUserUpvoted}>{props.suggestion.upvotes}</Upvote>
+                {props.suggestion && <Upvote upvoteClickHandler={upvoteClickHandler} active={props.suggestion.curUserUpvoted}>{props.suggestion.upvotes}</Upvote>}
                 <SuggestionContent>
-                    <h3>{props.suggestion.title}</h3>
-                    <p>{props.suggestion.description}</p>
-                    <Tag>{camelCaseHelper(props.suggestion.category)}</Tag>
+                {props.suggestion && <h3>{props.suggestion.title}</h3>}
+                {props.suggestion && <p>{props.suggestion.description}</p>}
+                {props.suggestion && <Tag>{camelCaseHelper(props.suggestion.category)}</Tag>}
                 </SuggestionContent>
             </LeftContainer>
             <RightContainer>
                 <CommentSvg></CommentSvg>
-                <Comments>{props.suggestion.comments ? <span>{props.suggestion.comments.length}</span> : <span>0</span>}</Comments>
+                {props.suggestion && <Comments>{props.suggestion.comments ? <span>{props.suggestion.comments.length}</span> : <span>0</span>}</Comments>}
             </RightContainer>
         </SuggestionBoxStyled>
     )
