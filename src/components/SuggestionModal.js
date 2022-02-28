@@ -10,7 +10,7 @@ import { BackBtn } from "./styles/FeedbackModalStyled";
 import { ReactComponent as BackSvg } from "../assets/shared/icon-arrow-left.svg";
 import SuggestionBox from "./SuggestionBox";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DataContext } from "../components/store/data-context";
 
 import CommentsComponent from '../components/CommentsComponent';
@@ -18,6 +18,8 @@ import AddComment from "./AddComment";
 import EditFeedback from "./EditFeedback";
 
 export default function SuggestionModal(props) {
+
+    const [feedbackModalActive, setFeedbackModalActive] = useState(false)
 
     const ctx = useContext(DataContext);
     let suggestion;
@@ -27,6 +29,8 @@ export default function SuggestionModal(props) {
             suggestion = request;
         }
     }))
+
+
 
 
   function backButtonHandler() {
@@ -40,6 +44,14 @@ export default function SuggestionModal(props) {
     ctx.upVote(id);
   }
 
+  function editFeedbackBtnHandler() {
+    setFeedbackModalActive(true);
+  }
+
+  function editFeedbackBackButtonHandler() {
+    setFeedbackModalActive(false);
+  }
+
   return (
     <SuggestionModalStyled modalActive={props.modalActive}>
       <SuggestionsModalContainer>
@@ -48,13 +60,13 @@ export default function SuggestionModal(props) {
             <BackSvg />
             <p>Go Back</p>
           </BackBtn>
-          <EditFeedbackButton>Edit Feedback</EditFeedbackButton>
+          <EditFeedbackButton onClick={editFeedbackBtnHandler}>Edit Feedback</EditFeedbackButton>
         </SuggestionsModalHeader>
         {props.id && <SuggestionBox suggestionBoxClickHandler={suggestionBoxClickHandler} upvoteClickHandler={upvoteClickHandler} modal={true} suggestion={suggestion}></SuggestionBox>}
         {props.id && <CommentsComponent suggestion={suggestion}></CommentsComponent>}
         <AddComment suggestion={suggestion}></AddComment>
       </SuggestionsModalContainer>
-      <EditFeedback></EditFeedback>
+      {props.id && <EditFeedback backButtonHandler={editFeedbackBackButtonHandler} suggestion={suggestion} modalActive={feedbackModalActive}></EditFeedback>}
     </SuggestionModalStyled>
   );
 }

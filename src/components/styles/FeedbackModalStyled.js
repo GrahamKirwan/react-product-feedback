@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FeedbackModalStyled =  styled.div`
+export const FeedbackModalStyled = styled.div`
     position: absolute;
     left: 0;
     top: 0;
@@ -8,6 +8,17 @@ export const FeedbackModalStyled =  styled.div`
     background-color: #f2f4ff;
     display: ${(props) => props.modalActive ? 'initial' : 'none'};
     height: 150%;
+`
+
+export const EditFeedbackModalStyled = styled.div`
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    background-color: #f2f4ff;
+    display: ${(props) => props.modalActive ? 'initial' : 'none'};
+    height: 150%;
+    z-index: 1000;
 `
 
 export const FeedbackModalContainer = styled.div`
@@ -52,7 +63,7 @@ export const PlusDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-
+    background-color: #ad1fea;
 `
 
 export const ContentContainer = styled.div`

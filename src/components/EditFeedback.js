@@ -1,5 +1,6 @@
 import {
     FeedbackModalStyled,
+    EditFeedbackModalStyled,
     FeedbackModalContainer,
     BackBtn,
     FormContainer,
@@ -21,17 +22,24 @@ import {
   import { useState, useRef } from "react";
   
   export default function EditFeedback(props) {
+
+    function camelCaseHelper(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    let initCat = camelCaseHelper(props.suggestion.category);
+    let initStatus = camelCaseHelper(props.suggestion.status);
   
-    const [category, setCategory] = useState("Feature");
+    const [category, setCategory] = useState(initCat);
     const [categoryDropdown, setCategoryDropdown] = useState(false);
+
+    const [status, setStatus] = useState(initStatus);
+    const [updateStatusDropdown, setUpdateStatusDropdown] = useState(false);
   
     const titleRef = useRef();
     const feedbackRef = useRef();
   
     function backButtonHandler() {
-      titleRef.current.value = '';
-      feedbackRef.current.value = '';
-      setCategory('Feature');
       props.backButtonHandler();
     }
   
@@ -41,6 +49,14 @@ import {
       } else {
         setCategoryDropdown(true);
       }
+    }
+
+    function statusDropdownHandler() {
+        if (updateStatusDropdown) {
+            setUpdateStatusDropdown(false);
+          } else {
+            setUpdateStatusDropdown(true);
+          }
     }
   
     function addFeedbackButtonHandler() {
@@ -79,24 +95,41 @@ import {
       setCategory('Bug');
       setCategoryDropdown(false);
     }
+
+    function suggestionClickHandler() {
+        setStatus('Suggestion');
+        setUpdateStatusDropdown(false);
+    }
+    function plannedClickHandler() {
+        setStatus('Planned');
+        setUpdateStatusDropdown(false);
+    }
+    function inprogressClickHandler() {
+        setStatus('In-Progress');
+        setUpdateStatusDropdown(false);
+    }
+    function liveClickHandler() {
+        setStatus('Live');
+        setUpdateStatusDropdown(false);
+    }
   
     return (
-      <FeedbackModalStyled modalActive={props.modalActive}>
+      <EditFeedbackModalStyled modalActive={props.modalActive}>
         <FeedbackModalContainer>
           <BackBtn onClick={backButtonHandler}>
             <BackSvg />
             <p>Go Back</p>
           </BackBtn>
           <FormContainer>
-            <PlusDiv>
-              <PlusSvg />
-            </PlusDiv>
+          <PlusDiv>
+            <PlusSvg />
+          </PlusDiv>
             <ContentContainer>
-              <h2>Edit 'Add a dark theme option'</h2>
+              <h2>Edit '{props.suggestion.title}'</h2>
               <FieldContainer>
                 <h3>Feedback Title</h3>
                 <p>Add a short, descriptive headline</p>
-                <input type="text" ref={titleRef}></input>
+                <input type="text" ref={titleRef} defaultValue={props.suggestion.title}></input>
               </FieldContainer>
               <FieldContainer>
                 <h3>Category</h3>
@@ -160,56 +193,48 @@ import {
                 <h3>Update Status</h3>
                 <p>Change feedback state</p>
                 <DropdownInput
-                  categoryDropdown={categoryDropdown}
-                  onClick={dropdownHandler}
+                  categoryDropdown={updateStatusDropdown}
+                  onClick={statusDropdownHandler}
                 >
-                  <p>{category}</p>
+                  <p>{status}</p>
                   <DownSvg />
                 </DropdownInput>
                 <DropdownOptions
-                  category={category}
-                  categoryDropdown={categoryDropdown}
+                  category={status}
+                  categoryDropdown={updateStatusDropdown}
                 >
                   <ul>
-                    <li onClick={featureClickHandler}>
-                      {category == "Feature" ? (
-                        <p style={{ color: "#ad1fea" }}>Feature</p>
+                    <li onClick={suggestionClickHandler}>
+                      {status == "Suggestion" ? (
+                        <p style={{ color: "#ad1fea" }}>Suggestion</p>
                       ) : (
-                        <p>Feature</p>
+                        <p>Suggestion</p>
                       )}
-                      {category == "Feature" && <CheckSvg />}
+                      {status == "Suggestion" && <CheckSvg />}
                     </li>
-                    <li onClick={uiClickHandler}>
-                      {category == "UI" ? (
-                        <p style={{ color: "#ad1fea" }}>UI</p>
+                    <li onClick={plannedClickHandler}>
+                      {status == "Planned" ? (
+                        <p style={{ color: "#ad1fea" }}>Planned</p>
                       ) : (
-                        <p>UI</p>
+                        <p>Planned</p>
                       )}
-                      {category == "UI" && <CheckSvg />}
+                      {status == "Planned" && <CheckSvg />}
                     </li>
-                    <li onClick={uxClickHandler}>
-                      {category == "UX" ? (
-                        <p style={{ color: "#ad1fea" }}>UX</p>
+                    <li onClick={inprogressClickHandler}>
+                      {status == "In-Progress" ? (
+                        <p style={{ color: "#ad1fea" }}>In-Progress</p>
                       ) : (
-                        <p>UX</p>
+                        <p>In-Progress</p>
                       )}
-                      {category == "UX" && <CheckSvg />}
+                      {status == "In-Progress" && <CheckSvg />}
                     </li>
-                    <li onClick={enhancementClickHandler}>
-                      {category == "Enhancement" ? (
-                        <p style={{ color: "#ad1fea" }}>Enhancement</p>
+                    <li onClick={liveClickHandler}>
+                      {status == "Live" ? (
+                        <p style={{ color: "#ad1fea" }}>Live</p>
                       ) : (
-                        <p>Enhancement</p>
+                        <p>Live</p>
                       )}
-                      {category == "Enhancement" && <CheckSvg />}
-                    </li>
-                    <li onClick={bugClickHandler}>
-                      {category == "Bug" ? (
-                        <p style={{ color: "#ad1fea" }}>Bug</p>
-                      ) : (
-                        <p>Bug</p>
-                      )}
-                      {category == "Bug" && <CheckSvg />}
+                      {status == "Live" && <CheckSvg />}
                     </li>
                   </ul>
                 </DropdownOptions>
@@ -220,7 +245,7 @@ import {
                   Include any specific comments on what should be improved, added,
                   etc.
                 </p>
-                <textarea rows={4} ref={feedbackRef}></textarea>
+                <textarea rows={4} ref={feedbackRef} defaultValue={props.suggestion.description}></textarea>
               </FieldContainer>
               <ButtonsContainer>
                   <CancelButton onClick={backButtonHandler}>Cancel</CancelButton>
@@ -229,7 +254,7 @@ import {
             </ContentContainer>
           </FormContainer>
         </FeedbackModalContainer>
-      </FeedbackModalStyled>
+      </EditFeedbackModalStyled>
     );
   }
   
