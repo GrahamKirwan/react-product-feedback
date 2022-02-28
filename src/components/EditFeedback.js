@@ -19,7 +19,7 @@ import {
   import { ReactComponent as DownSvg } from "../assets/shared/icon-arrow-down.svg";
   import { ReactComponent as CheckSvg } from "../assets/shared/icon-check.svg";
   
-  import { useState, useRef } from "react";
+  import { useState, useRef, useEffect } from "react";
   
   export default function EditFeedback(props) {
 
@@ -29,6 +29,16 @@ import {
 
     let initCat = camelCaseHelper(props.suggestion.category);
     let initStatus = camelCaseHelper(props.suggestion.status);
+
+    const [title, setTitle] = useState(props.suggestion.title);
+    const [description, setDescription] = useState(props.suggestion.description);
+        
+    useEffect(() => {
+        setTitle(props.suggestion.title);
+        setCategory(camelCaseHelper(props.suggestion.category));
+        setStatus(camelCaseHelper(props.suggestion.status));
+        setDescription(props.suggestion.description);
+    }, [props.suggestion.title])
   
     const [category, setCategory] = useState(initCat);
     const [categoryDropdown, setCategoryDropdown] = useState(false);
@@ -112,7 +122,7 @@ import {
         setStatus('Live');
         setUpdateStatusDropdown(false);
     }
-  
+
     return (
       <EditFeedbackModalStyled modalActive={props.modalActive}>
         <FeedbackModalContainer>
@@ -129,7 +139,9 @@ import {
               <FieldContainer>
                 <h3>Feedback Title</h3>
                 <p>Add a short, descriptive headline</p>
-                <input type="text" ref={titleRef} defaultValue={props.suggestion.title}></input>
+                <input type="text" ref={titleRef} value={title} onChange={(e) => {
+                    setTitle(e.target.value);
+                    }}></input>
               </FieldContainer>
               <FieldContainer>
                 <h3>Category</h3>
@@ -245,7 +257,9 @@ import {
                   Include any specific comments on what should be improved, added,
                   etc.
                 </p>
-                <textarea rows={4} ref={feedbackRef} defaultValue={props.suggestion.description}></textarea>
+                <textarea rows={4} ref={feedbackRef} value={description} onChange={(e) => {
+                    setDescription(e.target.value);
+                    }}></textarea>
               </FieldContainer>
               <ButtonsContainer>
                   <CancelButton onClick={backButtonHandler}>Cancel</CancelButton>
