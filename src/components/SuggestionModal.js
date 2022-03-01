@@ -32,8 +32,6 @@ export default function SuggestionModal(props) {
     }))
 
 
-
-
   function backButtonHandler() {
     props.suggestionModalBackButtonHandler();
   }
