@@ -19,7 +19,8 @@ import EditFeedback from "./EditFeedback";
 
 export default function SuggestionModal(props) {
 
-    const [feedbackModalActive, setFeedbackModalActive] = useState(false)
+    const [feedbackModalActive, setFeedbackModalActive] = useState(false);
+    const [hideCommentsBox, setHideCommmentsBox] = useState(false);
 
     const ctx = useContext(DataContext);
     let suggestion;
@@ -46,22 +47,27 @@ export default function SuggestionModal(props) {
 
   function editFeedbackBtnHandler() {
     setFeedbackModalActive(true);
+    setHideCommmentsBox(true);
   }
 
   function editFeedbackBackButtonHandler() {
     setFeedbackModalActive(false);
+    setHideCommmentsBox(false);
+  }
+
+
+  function editFeedbackHandler(newFeedback) {
+    ctx.editFeedback(newFeedback);
   }
 
   function deleteFeedbackHandler(id) {
     ctx.deleteFeedback(id);
   }
 
-  function editFeedbackHandler(newFeedback) {
-    ctx.editFeedback(newFeedback);
-  }
-
   function deleteBackButtonHandler() {
     props.suggestionModalBackButtonHandler();
+    setFeedbackModalActive(false);
+    setHideCommmentsBox(false);
   }
 
   return (
@@ -75,7 +81,7 @@ export default function SuggestionModal(props) {
           <EditFeedbackButton onClick={editFeedbackBtnHandler}>Edit Feedback</EditFeedbackButton>
         </SuggestionsModalHeader>
         {props.id && <SuggestionBox suggestionBoxClickHandler={suggestionBoxClickHandler} upvoteClickHandler={upvoteClickHandler} modal={true} suggestion={suggestion}></SuggestionBox>}
-        {props.id && <CommentsComponent suggestion={suggestion}></CommentsComponent>}
+        {props.id && <CommentsComponent hide={hideCommentsBox} suggestion={suggestion}></CommentsComponent>}
         <AddComment suggestion={suggestion}></AddComment>
       </SuggestionsModalContainer>
       {props.id && <EditFeedback deleteBackButtonHandler={deleteBackButtonHandler} deleteFeedback={deleteFeedbackHandler} editFeedback={editFeedbackHandler} backButtonHandler={editFeedbackBackButtonHandler} suggestion={suggestion} modalActive={feedbackModalActive}></EditFeedback>}

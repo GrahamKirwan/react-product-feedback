@@ -5,6 +5,7 @@ export const CommentsComponentStyled = styled.div`
   border-radius: 10px;
   padding: 30px;
   padding-bottom: 1px;
+  display: ${(props) => props.hide ? 'none' : 'block'};
 
   h3 {
     color: #3a4374;
