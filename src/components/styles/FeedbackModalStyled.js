@@ -7,7 +7,7 @@ export const FeedbackModalStyled = styled.div`
     width: 100vw;
     background-color: #f2f4ff;
     display: ${(props) => props.modalActive ? 'initial' : 'none'};
-    height: 150%;
+    
 `
 
 export const EditFeedbackModalStyled = styled.div`
@@ -17,7 +17,7 @@ export const EditFeedbackModalStyled = styled.div`
     width: 100vw;
     background-color: #f2f4ff;
     display: ${(props) => props.modalActive ? 'initial' : 'none'};
-    height: 150%;
+    /* height: 150%; */
     z-index: 1000;
 `
 
@@ -25,6 +25,7 @@ export const FeedbackModalContainer = styled.div`
     width: 540px;
     margin: 0 auto;
     margin-top: 100px;
+    margin-bottom: 40px;
 `
 
 export const BackBtn = styled.div`

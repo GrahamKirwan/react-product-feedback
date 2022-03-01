@@ -13,16 +13,20 @@ export default function Homepage() {
     const [suggestionModalActive, setSuggestionModalActive] = useState(false);
     const [suggBoxId, setSuggBoxId] = useState(0);
 
+    const [hideSuggestions, setHideSuggestions] = useState(false);
+
     const ctx = useContext(DataContext);
 
 
 
     function feedbackClickHandler() {
-      setFeedbackModalActive(true)
+      setFeedbackModalActive(true);
+      setHideSuggestions(true);
     }
 
     function backButtonHandler() {
       setFeedbackModalActive(false)
+      setHideSuggestions(false);
     }
 
     function addNewFeedback(newFeedback) {
@@ -44,16 +48,20 @@ export default function Homepage() {
     function suggestionBoxClickHandler(id) {
       setSuggBoxId(id);
       setSuggestionModalActive(true);
+      setHideSuggestions(true);
     }
 
     function suggestionModalBackButtonHandler() {
       setSuggestionModalActive(false);
+      setHideSuggestions(false);
     }
+
+ 
 
   return (
     <>
       <Sidebar />
-      <Suggestions suggestionBoxClickHandler={suggestionBoxClickHandler} feedbackClickHandler={feedbackClickHandler} />
+      <Suggestions hideSuggestions={hideSuggestions} suggestionBoxClickHandler={suggestionBoxClickHandler} feedbackClickHandler={feedbackClickHandler} />
       <FeedbackModal addNewFeedback={addNewFeedback} backButtonHandler={backButtonHandler} modalActive={feedbackModalActive}/>
       <SuggestionModal suggestionModalBackButtonHandler={suggestionModalBackButtonHandler} modalActive={suggestionModalActive} id={suggBoxId}></SuggestionModal>
     </>

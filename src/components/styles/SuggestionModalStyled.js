@@ -5,7 +5,6 @@ export const SuggestionModalStyled = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    height: 150%;
     width: 100vw;
     display: ${(props) => props.modalActive ? 'initial' : 'none'};
 `
@@ -15,6 +14,7 @@ export const SuggestionsModalContainer = styled.div`
     width: 800px;
     margin: 0 auto;
     margin-top: 100px;
+    margin-bottom: 100px;
 `
 
 export const SuggestionsModalHeader = styled.div`

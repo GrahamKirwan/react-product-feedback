@@ -40,7 +40,7 @@ export default function Suggestions(props) {
     }
     
     return (
-        <SuggestionsStyled>
+        <SuggestionsStyled hide={props.hideSuggestions}>
             <SuggestionsBanner feedbackClickHandler={feedbackClickHandler} suggestions={suggestions}></SuggestionsBanner>
             {suggestions.map((suggestion) => <SuggestionBox suggestionBoxClickHandler={suggestionBoxClickHandler} upvoteClickHandler={upvoteClickHandler} suggestion={suggestion} key={suggestion.id}/>)}
         </SuggestionsStyled>
