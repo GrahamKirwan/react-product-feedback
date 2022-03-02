@@ -411,6 +411,7 @@ export function DataContextProvider(props) {
         setData(newData);
     }
 
+
     function lowerCaseHelper(string) {
         return string.charAt(0).toLowerCase() + string.slice(1);
     }
@@ -422,7 +423,7 @@ export function DataContextProvider(props) {
         addSuggComment: addSuggCommentHandler,
         commentReply: addCommentReply,
         deleteFeedback: deleteFeedbackHandler,
-        editFeedback: editFeedbackHandler
+        editFeedback: editFeedbackHandler,
     }
 
     return (
