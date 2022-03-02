@@ -40,9 +40,10 @@ export default function Suggestions(props) {
         }
     }))
 
+    // Trigger this hook whenever we edit feedback or delete feedback
     useEffect(() => {
         setSuggestions(newSuggs);
-    }, [ctxTags])
+    }, [ctxTags, ctx.editFeedbackCounter, ctx.data])
 
 
 

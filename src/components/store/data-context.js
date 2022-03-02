@@ -319,11 +319,23 @@ export function DataContextProvider(props) {
         ]
       )
 
-      const [commentId, setCommentId] = useState(15);
+
+    useEffect(() => {
+        let storage = JSON.parse(localStorage.getItem("data"));
+        if(storage) {
+            setData(storage);
+        }
+    }, [])
+
+
+    const [commentId, setCommentId] = useState(15);
+    const [editFeedbackCounter, setEditFeedbackCounter] = useState(1);
 
     function addRequestHandler(newRequests) {
         let newItems = [...data, ...newRequests]
-        setData(newItems)
+        setData(newItems);
+        localStorage.setItem("data", JSON.stringify(newItems));
+
     }
 
     function upVoteHandler(id) {
@@ -336,6 +348,7 @@ export function DataContextProvider(props) {
             newData[id-1].curUserUpvoted = false;
         }
         setData(newData)
+        localStorage.setItem("data", JSON.stringify(newData));
     }
 
     function addSuggCommentHandler(suggId, comment) {
@@ -353,6 +366,7 @@ export function DataContextProvider(props) {
         }
         newData[suggId-1].comments.push(obj);
         setData(newData);
+        localStorage.setItem("data", JSON.stringify(newData));
     }
 
 
@@ -384,6 +398,7 @@ export function DataContextProvider(props) {
   
         })
         setData(newData);
+        localStorage.setItem("data", JSON.stringify(newData));
     }
 
     // Idea - change status to deleted 
@@ -395,6 +410,8 @@ export function DataContextProvider(props) {
             }
         }
         setData(newData);
+        localStorage.setItem("data", JSON.stringify(newData));
+        setEditFeedbackCounter(prev => prev + 1);
     }
 
     function editFeedbackHandler(newFeedback) {
@@ -409,6 +426,8 @@ export function DataContextProvider(props) {
             }
         }
         setData(newData);
+        localStorage.setItem("data", JSON.stringify(newData));
+        setEditFeedbackCounter(prev => prev + 1);
     }
 
 
@@ -416,8 +435,11 @@ export function DataContextProvider(props) {
         return string.charAt(0).toLowerCase() + string.slice(1);
     }
 
+
+
     const context = {
         data: data,
+        editFeedbackCounter: editFeedbackCounter,
         addRequest: addRequestHandler,
         upVote: upVoteHandler,
         addSuggComment: addSuggCommentHandler,

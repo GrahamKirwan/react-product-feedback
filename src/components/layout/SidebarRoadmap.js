@@ -11,22 +11,27 @@ import {
 } from "../styles/SidebarRoadmapStyled";
 import { Link } from "react-router-dom";
 
-import { data } from "./data";
+
+import { useContext } from "react";
+import { DataContext } from "../store/data-context";
 
 export default function SidebarRoadmap() {
+
+  const ctx = useContext(DataContext);
 
   let planned = 0;
   let inProgress = 0;
   let live = 0;
 
-  for (let i = 0; i < data.productRequests.length; i++) {
-    if (data.productRequests[i].status == "planned") {
+
+  for (let i = 0; i < ctx.data.length; i++) {
+    if (ctx.data[i].status == "planned") {
         planned++;
     }
-    if (data.productRequests[i].status == "in-progress") {
+    if (ctx.data[i].status == "in-progress") {
         inProgress++;
     }
-    if (data.productRequests[i].status == "live") {
+    if (ctx.data[i].status == "live") {
         live++;
     }
   }
