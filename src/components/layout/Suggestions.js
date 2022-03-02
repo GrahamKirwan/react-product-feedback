@@ -42,7 +42,7 @@ export default function Suggestions(props) {
 
     useEffect(() => {
         setSuggestions(newSuggs);
-    }, [])
+    }, [ctxTags])
 
 
 
@@ -76,11 +76,13 @@ export default function Suggestions(props) {
         // If sort == 'Most Upvotes' sort newData by highest upvotes first - then setSuggestions to newData
         if(sort == 'Most Upvotes') {
             newSuggs.sort((a, b) => parseFloat(b.upvotes) - parseFloat(a.upvotes));
+            
         }
 
         // If sort == 'Least Upvotes' sort newData by lowest upvotes first
         if(sort == 'Least Upvotes') {
             newSuggs.sort((a, b) => parseFloat(a.upvotes) - parseFloat(b.upvotes));
+            
         }
 
         // If sort == 'Most Comments' sort newData by highest comments first
@@ -104,6 +106,7 @@ export default function Suggestions(props) {
             noCommentsNotIncluded.sort((a, b) => parseFloat(b.comments.length) - parseFloat(a.comments.length));
                 
             newSuggs = noCommentsNotIncluded.concat(noCommentsIncluded);
+            
         }
 
         // If sort == 'Least Comments' sort newData by highest comments first
@@ -127,6 +130,7 @@ export default function Suggestions(props) {
             noCommentsNotIncluded.sort((a, b) => parseFloat(a.comments.length) - parseFloat(b.comments.length));
                 
             newSuggs = noCommentsIncluded.concat(noCommentsNotIncluded);
+            
         }
 
         setSuggestions(newSuggs);
