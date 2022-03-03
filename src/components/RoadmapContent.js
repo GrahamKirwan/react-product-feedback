@@ -1,23 +1,57 @@
 import React from 'react'
 
-import { RoadmapContentStyled,  PlannedColumn, ProgressColumn, LiveColumn} from './styles/RoadmapContentStyled'
+import { RoadmapContentStyled,  PlannedColumn, ProgressColumn, LiveColumn, ColumnHeader, ColumnDesc} from './styles/RoadmapContentStyled'
 import RoadmapCard from './RoadmapCard'
 
+import { DataContext } from './store/data-context'
+import { useContext } from 'react'
+
 export default function RoadmapContent() {
+
+    const ctx = useContext(DataContext);
+
+    let planned = 0;
+    let inProgress = 0;
+    let live = 0;
+    let plannedArr = [];
+    let progressArr = [];
+    let liveArr = [];
+
+
+    for (let i = 0; i < ctx.data.length; i++) {
+        if (ctx.data[i].status == "planned") {
+            planned++;
+            plannedArr.push(ctx.data[i]);
+        }
+        if (ctx.data[i].status == "in-progress") {
+            inProgress++;
+            progressArr.push(ctx.data[i]);
+        }
+        if (ctx.data[i].status == "live") {
+            live++;
+            liveArr.push(ctx.data[i]);
+        }
+    }
+
+
+
+
   return (
     <RoadmapContentStyled>
         <PlannedColumn>
-            <h3>Planned (2)</h3>
-            <p>Ideas prioritized for research</p>
-            <RoadmapCard />
+            <ColumnHeader>Planned ({planned})</ColumnHeader>
+            <ColumnDesc>Ideas prioritized for research</ColumnDesc>
+            {plannedArr.map((item, i) => <RoadmapCard item={item} key={i}/>)}
         </PlannedColumn>
         <ProgressColumn>
-            <h3>In-Progress (3)</h3>
-            <p>Currently being developed</p>
+            <ColumnHeader>In-Progress ({inProgress})</ColumnHeader>
+            <ColumnDesc>Currently being developed</ColumnDesc>
+            {progressArr.map((item, i) => <RoadmapCard item={item} key={i}/>)}
         </ProgressColumn>
         <LiveColumn>
-            <h3>Live (1)</h3>
-            <p>Released features</p>
+            <ColumnHeader>Live ({live})</ColumnHeader>
+            <ColumnDesc>Released features</ColumnDesc>
+            {liveArr.map((item, i) => <RoadmapCard item={item} key={i}/>)}
         </LiveColumn>
     </RoadmapContentStyled>
   )
