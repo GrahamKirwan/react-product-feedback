@@ -14,16 +14,22 @@ export default function Roadmap() {
     const [suggestionModalActive, setSuggestionModalActive] = useState(false);
     const [suggBoxId, setSuggBoxId] = useState(0);
 
+    const [hideSuggestions, setHideSuggestions] = useState(false);
+
 
     const ctx = useContext(DataContext);
 
 
     function backButtonHandler() {
-        setFeedbackModalActive(false)
+        setFeedbackModalActive(false);
+        setHideSuggestions(false);
+
     }
 
     function feedbackBtnHandler() {
         setFeedbackModalActive(true);
+        setHideSuggestions(true);
+
     }
   
     function addNewFeedback(newFeedback) {
@@ -44,17 +50,19 @@ export default function Roadmap() {
     function roadmapItemBtnHandler(id) {
         setSuggBoxId(id);
         setSuggestionModalActive(true);
+        setHideSuggestions(true);
     }
 
     function suggestionModalBackButtonHandler() {
         setSuggestionModalActive(false);
+        setHideSuggestions(false);
     }
 
 
     return (
         <RoadmapStyled>
             <RoadmapBanner feedbackBtnHandler={feedbackBtnHandler}/>
-            <RoadmapContent roadmapItemBtnHandler={roadmapItemBtnHandler} />
+            <RoadmapContent roadmapItemBtnHandler={roadmapItemBtnHandler} hideSuggestions={hideSuggestions}/>
             <FeedbackModal addNewFeedback={addNewFeedback} backButtonHandler={backButtonHandler} modalActive={feedbackModalActive}/>
             <SuggestionModal suggestionModalBackButtonHandler={suggestionModalBackButtonHandler} modalActive={suggestionModalActive} id={suggBoxId}/>
         </RoadmapStyled>

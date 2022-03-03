@@ -4,6 +4,7 @@ export const RoadmapContentStyled = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 44px;
+    display: ${(props) => props.hide ? 'none' : 'grid'}
 `
 
 export const ColumnHeader = styled.h3`

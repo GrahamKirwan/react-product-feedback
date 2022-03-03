@@ -39,7 +39,7 @@ export default function RoadmapContent(props) {
 
 
   return (
-    <RoadmapContentStyled>
+    <RoadmapContentStyled hide={props.hideSuggestions}>
         <PlannedColumn>
             <ColumnHeader>Planned ({planned})</ColumnHeader>
             <ColumnDesc>Ideas prioritized for research</ColumnDesc>
