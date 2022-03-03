@@ -1,6 +1,7 @@
 import { SuggestionsStyled } from "../styles/SuggestionsStyled"
 import SuggestionBox from "../SuggestionBox"
 import SuggestionsBanner from "./SuggestionsBanner"
+import Error from "./Error";
 
 import { useContext, useState, useEffect } from 'react';
 import { DataContext } from "../store/data-context"
@@ -141,7 +142,7 @@ export default function Suggestions(props) {
     return (
         <SuggestionsStyled hide={props.hideSuggestions}>
             <SuggestionsBanner sortByHandler={sortByHandler} feedbackClickHandler={feedbackClickHandler} suggestions={suggestions}></SuggestionsBanner>
-            {suggestions.map((suggestion) => <SuggestionBox suggestionBoxClickHandler={suggestionBoxClickHandler} upvoteClickHandler={upvoteClickHandler} suggestion={suggestion} key={suggestion.id}/>)}
+            {suggestions.length == 0 ? <Error /> : suggestions.map((suggestion) => <SuggestionBox suggestionBoxClickHandler={suggestionBoxClickHandler} upvoteClickHandler={upvoteClickHandler} suggestion={suggestion} key={suggestion.id}/>)}
         </SuggestionsStyled>
     )
 }
