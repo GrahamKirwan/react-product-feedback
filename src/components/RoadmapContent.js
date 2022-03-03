@@ -6,7 +6,7 @@ import RoadmapCard from './RoadmapCard'
 import { DataContext } from './store/data-context'
 import { useContext } from 'react'
 
-export default function RoadmapContent() {
+export default function RoadmapContent(props) {
 
     const ctx = useContext(DataContext);
 
@@ -33,7 +33,9 @@ export default function RoadmapContent() {
         }
     }
 
-
+    function roadmapItemBtnHandler(id) {
+        props.roadmapItemBtnHandler(id);
+    }
 
 
   return (
@@ -41,17 +43,17 @@ export default function RoadmapContent() {
         <PlannedColumn>
             <ColumnHeader>Planned ({planned})</ColumnHeader>
             <ColumnDesc>Ideas prioritized for research</ColumnDesc>
-            {plannedArr.map((item, i) => <RoadmapCard item={item} key={i}/>)}
+            {plannedArr.map((item, i) => <RoadmapCard roadmapItemBtnHandler={roadmapItemBtnHandler} item={item} key={i}/>)}
         </PlannedColumn>
         <ProgressColumn>
             <ColumnHeader>In-Progress ({inProgress})</ColumnHeader>
             <ColumnDesc>Currently being developed</ColumnDesc>
-            {progressArr.map((item, i) => <RoadmapCard item={item} key={i}/>)}
+            {progressArr.map((item, i) => <RoadmapCard roadmapItemBtnHandler={roadmapItemBtnHandler} item={item} key={i}/>)}
         </ProgressColumn>
         <LiveColumn>
             <ColumnHeader>Live ({live})</ColumnHeader>
             <ColumnDesc>Released features</ColumnDesc>
-            {liveArr.map((item, i) => <RoadmapCard item={item} key={i}/>)}
+            {liveArr.map((item, i) => <RoadmapCard roadmapItemBtnHandler={roadmapItemBtnHandler} item={item} key={i}/>)}
         </LiveColumn>
     </RoadmapContentStyled>
   )

@@ -6,10 +6,14 @@ import FeedbackModal from '../components/FeedbackModal'
 import { useState, useContext } from 'react'
 
 import { DataContext } from '../components/store/data-context'
+import SuggestionModal from '../components/SuggestionModal'
 
 export default function Roadmap() {
 
     const [feedbackModalActive, setFeedbackModalActive] = useState(false);
+    const [suggestionModalActive, setSuggestionModalActive] = useState(false);
+    const [suggBoxId, setSuggBoxId] = useState(0);
+
 
     const ctx = useContext(DataContext);
 
@@ -37,12 +41,22 @@ export default function Roadmap() {
         ctx.addRequest(request);
     }
 
+    function roadmapItemBtnHandler(id) {
+        setSuggBoxId(id);
+        setSuggestionModalActive(true);
+    }
+
+    function suggestionModalBackButtonHandler() {
+        setSuggestionModalActive(false);
+    }
+
 
     return (
         <RoadmapStyled>
             <RoadmapBanner feedbackBtnHandler={feedbackBtnHandler}/>
-            <RoadmapContent />
+            <RoadmapContent roadmapItemBtnHandler={roadmapItemBtnHandler} />
             <FeedbackModal addNewFeedback={addNewFeedback} backButtonHandler={backButtonHandler} modalActive={feedbackModalActive}/>
+            <SuggestionModal suggestionModalBackButtonHandler={suggestionModalBackButtonHandler} modalActive={suggestionModalActive} id={suggBoxId}/>
         </RoadmapStyled>
     )
 }

@@ -21,6 +21,10 @@ export default function RoadmapCard(props) {
         ctx.upVote(props.item.id);
     }
 
+    function roadmapItemBtnHandler() {
+        props.roadmapItemBtnHandler(props.item.id);
+    }
+
   return (
     <RoadmapCardStyled>
         <TopColor status={props.item.status} />
@@ -28,7 +32,7 @@ export default function RoadmapCard(props) {
             <OrangeCircle status={props.item.status} />
             <Text>{upperCaseHelper(props.item.status)}</Text>
           </CircleContainer>
-          <Title>{props.item.title}</Title>
+          <Title onClick={roadmapItemBtnHandler}>{props.item.title}</Title>
           <Description>{props.item.description}</Description>
           <Tag>{upperCaseHelper(props.item.category)}</Tag>
           <BottomContainer>
