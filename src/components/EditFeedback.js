@@ -1,5 +1,4 @@
 import {
-    FeedbackModalStyled,
     EditFeedbackModalStyled,
     FeedbackModalContainer,
     BackBtn,
@@ -173,44 +172,44 @@ import {
                 >
                   <ul>
                     <li onClick={featureClickHandler}>
-                      {category == "Feature" ? (
+                      {category === "Feature" ? (
                         <p style={{ color: "#ad1fea" }}>Feature</p>
                       ) : (
                         <p>Feature</p>
                       )}
-                      {category == "Feature" && <CheckSvg />}
+                      {category === "Feature" && <CheckSvg />}
                     </li>
                     <li onClick={uiClickHandler}>
-                      {category == "UI" ? (
+                      {category === "UI" ? (
                         <p style={{ color: "#ad1fea" }}>UI</p>
                       ) : (
                         <p>UI</p>
                       )}
-                      {category == "UI" && <CheckSvg />}
+                      {category === "UI" && <CheckSvg />}
                     </li>
                     <li onClick={uxClickHandler}>
-                      {category == "UX" ? (
+                      {category === "UX" ? (
                         <p style={{ color: "#ad1fea" }}>UX</p>
                       ) : (
                         <p>UX</p>
                       )}
-                      {category == "UX" && <CheckSvg />}
+                      {category === "UX" && <CheckSvg />}
                     </li>
                     <li onClick={enhancementClickHandler}>
-                      {category == "Enhancement" ? (
+                      {category === "Enhancement" ? (
                         <p style={{ color: "#ad1fea" }}>Enhancement</p>
                       ) : (
                         <p>Enhancement</p>
                       )}
-                      {category == "Enhancement" && <CheckSvg />}
+                      {category === "Enhancement" && <CheckSvg />}
                     </li>
                     <li onClick={bugClickHandler}>
-                      {category == "Bug" ? (
+                      {category === "Bug" ? (
                         <p style={{ color: "#ad1fea" }}>Bug</p>
                       ) : (
                         <p>Bug</p>
                       )}
-                      {category == "Bug" && <CheckSvg />}
+                      {category === "Bug" && <CheckSvg />}
                     </li>
                   </ul>
                 </DropdownOptions>
@@ -231,36 +230,36 @@ import {
                 >
                   <ul>
                     <li onClick={suggestionClickHandler}>
-                      {status == "Suggestion" ? (
+                      {status === "Suggestion" ? (
                         <p style={{ color: "#ad1fea" }}>Suggestion</p>
                       ) : (
                         <p>Suggestion</p>
                       )}
-                      {status == "Suggestion" && <CheckSvg />}
+                      {status === "Suggestion" && <CheckSvg />}
                     </li>
                     <li onClick={plannedClickHandler}>
-                      {status == "Planned" ? (
+                      {status === "Planned" ? (
                         <p style={{ color: "#ad1fea" }}>Planned</p>
                       ) : (
                         <p>Planned</p>
                       )}
-                      {status == "Planned" && <CheckSvg />}
+                      {status === "Planned" && <CheckSvg />}
                     </li>
                     <li onClick={inprogressClickHandler}>
-                      {status == "In-Progress" ? (
+                      {status === "In-Progress" ? (
                         <p style={{ color: "#ad1fea" }}>In-Progress</p>
                       ) : (
                         <p>In-Progress</p>
                       )}
-                      {status == "In-Progress" && <CheckSvg />}
+                      {status === "In-Progress" && <CheckSvg />}
                     </li>
                     <li onClick={liveClickHandler}>
-                      {status == "Live" ? (
+                      {status === "Live" ? (
                         <p style={{ color: "#ad1fea" }}>Live</p>
                       ) : (
                         <p>Live</p>
                       )}
-                      {status == "Live" && <CheckSvg />}
+                      {status === "Live" && <CheckSvg />}
                     </li>
                   </ul>
                 </DropdownOptions>

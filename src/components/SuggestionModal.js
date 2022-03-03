@@ -26,7 +26,7 @@ export default function SuggestionModal(props) {
     let suggestion;
 
     ctx.data.map((request => {
-        if (request.id == props.id) {
+        if (request.id === props.id) {
             suggestion = request;
         }
     }))

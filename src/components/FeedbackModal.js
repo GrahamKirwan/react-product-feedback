@@ -114,44 +114,44 @@ export default function FeedbackModal(props) {
               >
                 <ul>
                   <li onClick={featureClickHandler}>
-                    {category == "Feature" ? (
+                    {category === "Feature" ? (
                       <p style={{ color: "#ad1fea" }}>Feature</p>
                     ) : (
                       <p>Feature</p>
                     )}
-                    {category == "Feature" && <CheckSvg />}
+                    {category === "Feature" && <CheckSvg />}
                   </li>
                   <li onClick={uiClickHandler}>
-                    {category == "UI" ? (
+                    {category === "UI" ? (
                       <p style={{ color: "#ad1fea" }}>UI</p>
                     ) : (
                       <p>UI</p>
                     )}
-                    {category == "UI" && <CheckSvg />}
+                    {category === "UI" && <CheckSvg />}
                   </li>
                   <li onClick={uxClickHandler}>
-                    {category == "UX" ? (
+                    {category === "UX" ? (
                       <p style={{ color: "#ad1fea" }}>UX</p>
                     ) : (
                       <p>UX</p>
                     )}
-                    {category == "UX" && <CheckSvg />}
+                    {category === "UX" && <CheckSvg />}
                   </li>
                   <li onClick={enhancementClickHandler}>
-                    {category == "Enhancement" ? (
+                    {category === "Enhancement" ? (
                       <p style={{ color: "#ad1fea" }}>Enhancement</p>
                     ) : (
                       <p>Enhancement</p>
                     )}
-                    {category == "Enhancement" && <CheckSvg />}
+                    {category === "Enhancement" && <CheckSvg />}
                   </li>
                   <li onClick={bugClickHandler}>
-                    {category == "Bug" ? (
+                    {category === "Bug" ? (
                       <p style={{ color: "#ad1fea" }}>Bug</p>
                     ) : (
                       <p>Bug</p>
                     )}
-                    {category == "Bug" && <CheckSvg />}
+                    {category === "Bug" && <CheckSvg />}
                   </li>
                 </ul>
               </DropdownOptions>

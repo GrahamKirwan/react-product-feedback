@@ -19,15 +19,15 @@ export default function RoadmapContent(props) {
 
 
     for (let i = 0; i < ctx.data.length; i++) {
-        if (ctx.data[i].status == "planned") {
+        if (ctx.data[i].status === "planned") {
             planned++;
             plannedArr.push(ctx.data[i]);
         }
-        if (ctx.data[i].status == "in-progress") {
+        if (ctx.data[i].status === "in-progress") {
             inProgress++;
             progressArr.push(ctx.data[i]);
         }
-        if (ctx.data[i].status == "live") {
+        if (ctx.data[i].status === "live") {
             live++;
             liveArr.push(ctx.data[i]);
         }
