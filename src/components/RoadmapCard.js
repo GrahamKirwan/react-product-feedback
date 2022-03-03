@@ -2,14 +2,23 @@ import React from 'react'
 import {RoadmapCardStyled, TopColor, CircleContainer, OrangeCircle, Text, Title, Description, Tag, BottomContainer, Upvote, CommentsContainer} from '../components/styles/RoadmapCardStyled';
 
 import { ReactComponent as ArrowSvg } from '../assets/shared/icon-arrow-up.svg';
+import { ReactComponent as ArrowWhiteSvg } from '../assets/shared/icon-arrow-up-white.svg';
 import { ReactComponent as CommentsSvg } from '../assets/shared/icon-comments.svg';
 
+import { useContext } from 'react';
+import { DataContext } from './store/data-context';
 
 export default function RoadmapCard(props) {
+
+    const ctx = useContext(DataContext);
 
 
     function upperCaseHelper(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    function upvoteClickHandler() {
+        ctx.upVote(props.item.id);
     }
 
   return (
@@ -23,7 +32,7 @@ export default function RoadmapCard(props) {
           <Description>{props.item.description}</Description>
           <Tag>{upperCaseHelper(props.item.category)}</Tag>
           <BottomContainer>
-              <Upvote><ArrowSvg />{props.item.upvotes}</Upvote>
+              <Upvote onClick={upvoteClickHandler} active={props.item.curUserUpvoted}>{props.item.curUserUpvoted ? <ArrowWhiteSvg /> : <ArrowSvg />}{props.item.upvotes}</Upvote>
               <CommentsContainer>
                   <CommentsSvg />
                   <p>{props.item.comments ? props.item.comments.length : '0'}</p>
@@ -32,3 +41,4 @@ export default function RoadmapCard(props) {
     </RoadmapCardStyled>
   )
 }
+
