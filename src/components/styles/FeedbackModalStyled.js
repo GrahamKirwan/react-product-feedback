@@ -26,6 +26,11 @@ export const FeedbackModalContainer = styled.div`
     margin: 0 auto;
     margin-top: 100px;
     margin-bottom: 40px;
+
+    @media screen and (max-width: 750px) {
+        width: 90%;
+        margin-top: 30px;
+    }
 `
 
 export const BackBtn = styled.div`
@@ -54,6 +59,10 @@ export const FormContainer = styled.div`
     padding: 50px;
     position: relative;
     border-radius: 10px;
+
+    @media screen and (max-width: 750px) {
+        padding: 40px 25px;
+    }
 `
 
 export const PlusDiv = styled.div`

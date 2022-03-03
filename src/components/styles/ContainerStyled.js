@@ -7,4 +7,10 @@ export const ContainerStyled = styled.div`
 
     display: grid;
     grid-template-columns: 1fr 4fr;
+
+
+    @media screen and (max-width: 750px) {
+        grid-template-columns: 1fr;
+        margin-top: 30px
+    }
 `

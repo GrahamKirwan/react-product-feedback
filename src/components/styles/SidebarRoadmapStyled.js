@@ -38,6 +38,13 @@ export const SidebarRoadmapStyled = styled.div`
         line-height: 20px;
         font-weight: 700;
     }
+
+    @media screen and (max-width: 750px) {
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+
+    }
 `
 
 

@@ -20,4 +20,8 @@ export const UpvoteStyled = styled.div`
         background-color: ${(props) => props.active ? '#4661e6' : '#cfd7ff'};
 
     }
+
+    @media screen and (max-width: 750px) {
+        width: 80px;
+    }
 `

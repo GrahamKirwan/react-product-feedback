@@ -15,6 +15,10 @@ export const SuggestionsModalContainer = styled.div`
     margin: 0 auto;
     margin-top: 100px;
     margin-bottom: 100px;
+
+    @media screen and (max-width: 750px) {
+        width: 90%;
+    }
 `
 
 export const SuggestionsModalHeader = styled.div`

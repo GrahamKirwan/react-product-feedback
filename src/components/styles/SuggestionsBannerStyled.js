@@ -17,6 +17,25 @@ export const SuggestionsBannerStyled = styled.div`
         line-height: 26px;
         font-weight: 700;
         margin-right: 25px;
+        
+        @media screen and (max-width: 750px) {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 750px) {
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+
+    svg {
+
+        &:first-child {
+            @media screen and (max-width: 750px) {
+                display: none;
+            }
+        }
     }
 
 `
@@ -29,6 +48,8 @@ export const BannerLeft = styled.div`
     svg {
         margin-right: 30px;
     }
+
+
 `
 
 export const SortBy = styled.div`
@@ -43,6 +64,10 @@ export const SortBy = styled.div`
         margin-right: 15px;
         user-select: none;
 
+        @media screen and (max-width: 750px) {
+        width: 30%;
+    }
+
     }
 
     h4 {
@@ -53,12 +78,21 @@ export const SortBy = styled.div`
         margin-right: 7px;
         user-select: none;
 
+        @media screen and (max-width: 750px) {
+        width: 35%;
+    }
+
+
 
     }
 
     svg {
         transform: ${(props) => props.visible ? 'rotate(180deg)' : 'rotate(0deg)'};
         transition: all .3s;
+
+        @media screen and (max-width: 750px) {
+            margin-right: 10px;
+        }
     }
 `
 
@@ -120,5 +154,10 @@ export const SortByOptions = styled.div`
                 }
             }
         }
+
+        @media screen and (max-width: 750px) {
+        width: 100%;
+        right: initial;
+    }
 
 `

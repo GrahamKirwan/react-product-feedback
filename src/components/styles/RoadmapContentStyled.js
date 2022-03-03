@@ -4,7 +4,12 @@ export const RoadmapContentStyled = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 44px;
-    display: ${(props) => props.hide ? 'none' : 'grid'}
+    display: ${(props) => props.hide ? 'none' : 'grid'};
+
+    @media screen and (max-width: 750px) {
+        grid-template-columns: 1fr;
+
+    }
 `
 
 export const ColumnHeader = styled.h3`

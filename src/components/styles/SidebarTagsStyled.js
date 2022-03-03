@@ -12,4 +12,10 @@ export const SidebarTagsStyled = styled.div`
     flex-wrap: wrap;
     width: 207px;
     margin-right: 30px;
+
+    @media screen and (max-width: 750px) {
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
 `

@@ -14,6 +14,13 @@ export const SuggestionBoxStyled = styled.div`
         cursor: ${(props) => props.modal ? 'auto' : 'pointer'}
     }
 
+    @media screen and (max-width: 750px) {
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        padding: 30px 20px;
+    }
+
 `
 
 export const LeftContainer = styled.div`

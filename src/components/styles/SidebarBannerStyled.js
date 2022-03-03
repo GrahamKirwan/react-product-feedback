@@ -22,4 +22,10 @@ export const SidebarBannerStyled = styled.div`
     p {
         margin: 0;
     }
+
+    @media screen and (max-width: 750px) {
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
 `
