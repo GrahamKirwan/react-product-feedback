@@ -39,8 +39,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/GrahamKirwan/react-product-feedback)
-- Live Site URL: [Add live site URL here](https://react-product-feedback.vercel.app/)
+- Solution URL: [https://github.com/GrahamKirwan/react-product-feedback](https://github.com/GrahamKirwan/react-product-feedback)
+- Live Site URL: [https://react-product-feedback.vercel.app/](https://react-product-feedback.vercel.app/)
 
 ## My process
 
@@ -67,4 +67,4 @@ I would like to come back to this project and add user auth and possibly connect
 
 ## Author
 
-- Website - [Add your name here](https://grahamkirwan.github.io/)
+- Website - [https://grahamkirwan.github.io/](https://grahamkirwan.github.io/)
