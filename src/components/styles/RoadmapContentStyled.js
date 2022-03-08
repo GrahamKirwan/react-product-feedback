@@ -29,16 +29,10 @@ export const ColumnDesc = styled.p`
 `
 
 export const PlannedColumn = styled.div`
-    /* height: 500px;
-    background-color: green; */
 `
 
 export const ProgressColumn = styled.div`
-    /* height: 500px;
-    background-color: blue; */
 `
 
 export const LiveColumn = styled.div`
-    /* height: 500px;
-    background-color: orange; */
 `
