@@ -434,6 +434,9 @@ export function DataContextProvider(props) {
     function lowerCaseHelper(string) {
         return string.charAt(0).toLowerCase() + string.slice(1);
     }
+    function upperCaseHelper(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
 
 
